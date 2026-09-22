@@ -3,189 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Hostel Complaint Management System</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f4f6f9;
-            color: #222;
-        }
-
-        header {
-            background: #243b55;
-            color: white;
-            padding: 25px 15px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin-bottom: 8px;
-        }
-
-        header p {
-            font-size: 15px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-        }
-
-        .card h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            font-size: 15px;
-        }
-
-        textarea {
-            height: 100px;
-            resize: none;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 20px;
-            padding: 13px;
-            border: none;
-            border-radius: 7px;
-            background: #243b55;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #141e30;
-        }
-
-        #result {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #e8f5e9;
-            border-radius: 8px;
-            color: #1b5e20;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: #666;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>🏠 Hostel Complaint Management System</h1>
-        <p>Submit and manage your hostel complaints easily</p>
-    </header>
+<header>
+    <h1>🏠 Hostel Complaint Management System</h1>
+    <p>Submit and track your hostel complaints</p>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <div class="card">
-            <h2>Submit a Complaint</h2>
+    <div class="card">
 
-            <form onsubmit="submitComplaint(event)">
+        <h2>Submit a Complaint</h2>
 
-                <label>Student Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
+        <form onsubmit="submitComplaint(event)">
 
-                <label>Roll Number</label>
-                <input type="text" id="roll" placeholder="Enter roll number" required>
+            <label>Student Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
 
-                <label>Room Number</label>
-                <input type="text" id="room" placeholder="Enter room number" required>
+            <label>Roll Number</label>
+            <input
+                type="text"
+                id="roll"
+                placeholder="Enter roll number"
+                required
+            >
 
-                <label>Complaint Category</label>
-                <select id="category" required>
-                    <option value="">Select category</option>
-                    <option>Electricity</option>
-                    <option>Water</option>
-                    <option>Cleaning</option>
-                    <option>Food</option>
-                    <option>Wi-Fi</option>
-                    <option>Other</option>
-                </select>
+            <label>Room Number</label>
+            <input
+                type="text"
+                id="room"
+                placeholder="Enter room number"
+                required
+            >
 
-                <label>Complaint Description</label>
-                <textarea id="complaint"
-                    placeholder="Describe your complaint..."
-                    required></textarea>
+            <label>Complaint Category</label>
 
-                <button type="submit">Submit Complaint</button>
+            <select id="category" required>
+                <option value="">Select category</option>
+                <option>Electricity</option>
+                <option>Water</option>
+                <option>Cleaning</option>
+                <option>Food</option>
+                <option>Wi-Fi</option>
+                <option>Other</option>
+            </select>
 
-            </form>
+            <label>Complaint Description</label>
 
-            <div id="result"></div>
-        </div>
+            <textarea
+                id="complaint"
+                placeholder="Describe your complaint..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Submit Complaint
+            </button>
+
+        </form>
+
+        <div id="result" style="display:none;"></div>
 
     </div>
 
-    <footer>
-        © 2026 Hostel Complaint Management System
-    </footer>
+</div>
 
-    <script>
-        function submitComplaint(event) {
+<footer>
+    © 2026 Hostel Complaint Management System
+</footer>
 
-            event.preventDefault();
-
-            let name = document.getElementById("name").value;
-            let roll = document.getElementById("roll").value;
-            let room = document.getElementById("room").value;
-            let category = document.getElementById("category").value;
-            let complaint = document.getElementById("complaint").value;
-
-            let complaintId =
-                "HC" + Math.floor(1000 + Math.random() * 9000);
-
-            document.getElementById("result").style.display = "block";
-
-            document.getElementById("result").innerHTML =
-                "<b>Complaint Submitted Successfully! ✅</b><br><br>" +
-                "Complaint ID: <b>" + complaintId + "</b><br>" +
-                "Student: " + name + "<br>" +
-                "Roll Number: " + roll + "<br>" +
-                "Room: " + room + "<br>" +
-                "Category: " + category + "<br>" +
-                "Status: <b>Pending</b>";
-
-            document.querySelector("form").reset();
-        }
-    </script>
+<script src="script.js"></script>
 
 </body>
 </html>
